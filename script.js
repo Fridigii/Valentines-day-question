@@ -1,3 +1,7 @@
+// Pre-cargar la imagen del Grinch para evitar el parpadeo
+var grinchPreload = new Image();
+grinchPreload.src = 'grinchme.gif';
+
 // Variable para llevar la cuenta de cuántas veces dicen que "No"
 let noClickCount = 0;
 
