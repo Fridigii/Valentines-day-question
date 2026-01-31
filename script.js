@@ -1,31 +1,52 @@
-// script.js CORREGIDO
+// Variable para llevar la cuenta de cuántas veces dicen que "No"
+let noClickCount = 0;
 
-// Function to handle button click events
 function selectOption(option) {
-    // Check which option was clicked
-    // CORREGIDO: Ahora comparamos con 'yes' porque eso es lo que envía tu HTML
+    // Si dice que SÍ
     if (option === 'yes') {
-        // Flash rainbow colors
         flashRainbowColors(function () {
-            document.getElementById('question').style.display = 'none'; // Hide the question
-            displayGrinch(); // Muestra al Grinch
+            document.getElementById('question').style.display = 'none';
+            displayGrinch();
         });
+
+        // Si dice que NO
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
-        document.getElementById('no-button').innerText = 'Segura?';
-        // Increase font size of "Yes" button
-        // CORREGIDO: Buscamos 'si-button' porque así le pusiste en el HTML
+        noClickCount++; // Aumentamos el contador
+
+        // ELEMENTOS
+        var noButton = document.getElementById('no-button');
         var yesButton = document.getElementById('si-button');
+
+        // LISTA DE FRASES (Puedes cambiarlas por las que quieras)
+        var phrases = [
+            "¿Estás segura?",
+            "¿De verdad?",
+            "¡Piénsalo bien!",
+            "Mira el otro botón...",
+            "¡Me vas a romper el corazón!",
+            "¡Voy a llorar!",
+            "¡No seas así!",
+            "¡Di que sí por favor!",
+            "¡Andaaa!",
+            "Vale, ya entendí... mentira, ¡di que SÍ!"
+        ];
+
+        // CAMBIAR TEXTO DEL BOTÓN NO
+        // Usa el contador para elegir la frase siguiente
+        noButton.innerText = phrases[noClickCount % phrases.length];
+
+        // HACER GIGANTE EL BOTÓN SÍ
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size
+        var newSize = parseFloat(currentFontSize) * 1.4; // Crece un poco menos brusco (1.4x)
         yesButton.style.fontSize = newSize + 'px';
+
     } else {
-        // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Opción invalida!');
     }
 }
 
-// Function to flash rainbow colors and then execute a callback function
+// --- El resto del código se queda igual ---
+
 function flashRainbowColors(callback) {
     var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     var i = 0;
@@ -42,7 +63,6 @@ function flashRainbowColors(callback) {
     }, 2000);
 }
 
-// Function to display the horses.gif initially
 function displayHorse() {
     var imageContainer = document.getElementById('image-container');
     var horseImage = new Image();
@@ -53,7 +73,6 @@ function displayHorse() {
     };
 }
 
-// Function to display the grinchme.gif
 function displayGrinch() {
     document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
@@ -62,10 +81,8 @@ function displayGrinch() {
     grinchImage.alt = 'Grinch Meme';
     grinchImage.onload = function () {
         imageContainer.appendChild(grinchImage);
-        // Ocultar los botones después de decir que sí
         document.getElementById('options').style.display = 'none';
     };
 }
 
-// Display the horses.gif initially
 displayHorse();
