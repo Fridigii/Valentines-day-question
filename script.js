@@ -1,13 +1,29 @@
-// Pre-cargar la imagen del Grinch para evitar el parpadeo
+// script.js FINAL
+
+// 1. Cargamos la música (nombre exacto del archivo que subiste)
+var music = new Audio('careless_whispers.mp3');
+music.loop = true; // Para que se repita si se acaba
+music.volume = 1.0; // Volumen al máximo
+
+// 2. Pre-carga del Grinch
 var grinchPreload = new Image();
 grinchPreload.src = 'grinchme.gif';
 
-// Variable para llevar la cuenta de cuántas veces dicen que "No"
 let noClickCount = 0;
+
+window.onload = function () {
+    displayHorse();
+};
 
 function selectOption(option) {
     // Si dice que SÍ
     if (option === 'yes') {
+        // --- AQUÍ SUENA LA CANCIÓN ---
+        music.play().catch(function (error) {
+            console.log("Error al reproducir audio:", error);
+        });
+
+        // Animación de colores instantánea
         flashRainbowColors(function () {
             document.getElementById('question').style.display = 'none';
             displayGrinch();
@@ -15,13 +31,11 @@ function selectOption(option) {
 
         // Si dice que NO
     } else if (option === 'no') {
-        noClickCount++; // Aumentamos el contador
+        noClickCount++;
 
-        // ELEMENTOS
         var noButton = document.getElementById('no-button');
         var yesButton = document.getElementById('si-button');
 
-        // LISTA DE FRASES (Puedes cambiarlas por las que quieras)
         var phrases = [
             "¿Estás segura?",
             "¿De verdad?",
@@ -35,13 +49,10 @@ function selectOption(option) {
             "Vale, ya entendí... mentira, ¡di que SÍ!"
         ];
 
-        // CAMBIAR TEXTO DEL BOTÓN NO
-        // Usa el contador para elegir la frase siguiente
         noButton.innerText = phrases[noClickCount % phrases.length];
 
-        // HACER GIGANTE EL BOTÓN SÍ
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 1.4; // Crece un poco menos brusco (1.4x)
+        var newSize = parseFloat(currentFontSize) * 1.4;
         yesButton.style.fontSize = newSize + 'px';
 
     } else {
@@ -49,22 +60,21 @@ function selectOption(option) {
     }
 }
 
-// --- El resto del código se queda igual ---
-
 function flashRainbowColors(callback) {
     var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     var i = 0;
     var interval = setInterval(function () {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 0);
+    }, 0); // Cambio instantáneo
+
     setTimeout(function () {
         clearInterval(interval);
         document.body.style.backgroundColor = '';
         if (callback) {
             callback();
         }
-    }, 0);
+    }, 0); // Sin espera
 }
 
 function displayHorse() {
@@ -88,5 +98,3 @@ function displayGrinch() {
         document.getElementById('options').style.display = 'none';
     };
 }
-
-displayHorse();
