@@ -64,7 +64,7 @@ function flashRainbowColors(callback) {
         if (callback) {
             callback();
         }
-    }, 2000);
+    }, 500);
 }
 
 function displayHorse() {
