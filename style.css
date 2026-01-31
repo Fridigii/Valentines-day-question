@@ -1,112 +1,106 @@
-/* style.css FINAL - Botones nuevos y GIFs grandes */
+/* style.css AJUSTADO - Tamaño de imagen perfecto */
 
 body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
-    /* Fondo degradado suave */
     background: linear-gradient(135deg, #fdfbfb 0%, #ffe6e6 100%);
     height: 100vh;
-    /* Altura completa de la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Evita el scroll */
 }
 
 #container {
     text-align: center;
-    width: 120%;
+    width: 100%;
     padding: 20px;
-    /* Un poco de margen en celulares */
     box-sizing: border-box;
+    display: flex;
+    /* Asegura centrado flexbox */
+    justify-content: center;
 }
 
 /* ESTILO DE TARJETA */
 .card {
     background: rgba(255, 255, 255, 0.92);
-    /* Blanco casi opaco */
     padding: 40px;
     border-radius: 24px;
-    /* Esquinas más redondeadas */
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    /* Sombra profunda */
-    display: inline-block;
-    max-width: 95%;
-    /* Ocupa casi todo el ancho en móvil */
-    width: auto;
+
+    /* ANCHO DE TARJETA: Controlamos que no sea ni muy chica ni muy ancha */
+    width: 100%;
+    max-width: 600px;
+    /* Ancho máximo ideal para que el GIF de 480px quepa holgado */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
-/* --- CAMBIO 1: GIFS MÁS GRANDES --- */
+/* --- AJUSTE DEL CUADRO DE LOS GIFS --- */
+#image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 #image-container img {
-    /* Aumentado de 300px a 480px */
-    max-width: 520px;
-    width: 120%;
-    /* Se adapta si la pantalla es más pequeña */
+    /* TAMAÑO AJUSTADO */
+    width: 100%;
+    /* Ocupa todo el ancho disponible del contenedor */
+    max-width: 480px;
+    /* Pero no pasa de este tamaño (para que no se pixelee) */
     height: auto;
+    /* Mantiene la proporción original */
+
     border-radius: 16px;
-    margin-bottom: 25px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    /* Sombra para la imagen */
+    object-fit: cover;
+    /* Asegura que la imagen llene bien el cuadro */
 }
 
 #question {
     font-family: 'Sacramento', cursive;
-    font-size: 55px;
-    /* Un poco más grande el título */
+    font-size: 50px;
     color: #d63384;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     line-height: 1.1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #options {
+    width: 100%;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     gap: 15px;
-    /* Espacio entre botones */
     flex-wrap: wrap;
-    /* Para que se acomoden en celulares pequeños */
 }
 
-/* --- CAMBIO 2: NUEVO ESTILO DE BOTONES --- */
+/* BOTONES (Manteniendo el estilo moderno que ya tienes) */
 button {
     padding: 16px 32px;
-    /* Más grandes y cómodos */
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
-    /* Letra más gruesa */
-
-    /* Nuevo fondo: Degradado moderno */
     background: linear-gradient(45deg, #ff6b81, #ff4757);
     color: white;
     border: none;
-
-    /* Nueva forma: Rectángulo redondeado moderno */
     border-radius: 16px;
     cursor: pointer;
-
-    /* Sombra "Globo" del color del botón */
     box-shadow: 0 10px 20px -10px rgba(255, 71, 87, 0.5);
-
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Animación muy suave */
 }
 
-/* Efecto al pasar el mouse */
 button:hover {
-    /* Degradado un poco más oscuro */
     background: linear-gradient(45deg, #ff4757, #d63384);
-    /* El botón se "levanta" */
-    transform: translateY(-5px);
-    /* La sombra se hace más intensa */
+    transform: translateY(-3px);
     box-shadow: 0 15px 25px -10px rgba(255, 71, 87, 0.7);
 }
 
-/* El botón Sí crecerá suavemente */
 #si-button {
     transition: all 0.3s ease;
 }
