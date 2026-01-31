@@ -25,7 +25,7 @@ body {
 }
 
 #image-container {
-    /* This container will hold the images */
+    /* This container will hold the images handled by script.js */
 }
 
 #question {
@@ -57,3 +57,4 @@ button {
     /* Remove button border */
     cursor: pointer;
     /* Set cursor to pointer on hover */
+}
