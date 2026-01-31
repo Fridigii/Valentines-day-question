@@ -57,7 +57,7 @@ function flashRainbowColors(callback) {
     var interval = setInterval(function () {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 200);
+    }, 0);
     setTimeout(function () {
         clearInterval(interval);
         document.body.style.backgroundColor = '';
