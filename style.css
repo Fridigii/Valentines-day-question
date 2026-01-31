@@ -1,60 +1,112 @@
-/* style.css */
+/* style.css FINAL - Botones nuevos y GIFs grandes */
 
 body {
-    font-family: Arial, sans-serif;
-    /* Fallback font family */
-    text-align: center;
-    /* Center-align text */
+    font-family: 'Nunito', sans-serif;
     margin: 0;
-    /* Remove default margin */
-    background-color: #FADADD;
-    /* Set background color to light pink */
+    /* Fondo degradado suave */
+    background: linear-gradient(135deg, #fdfbfb 0%, #ffe6e6 100%);
+    height: 100vh;
+    /* Altura completa de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Evita el scroll */
 }
 
 #container {
-    display: flex;
-    /* Use flexbox layout */
-    flex-direction: column;
-    /* Stack elements vertically */
-    align-items: center;
-    /* Center-align items horizontally */
-    justify-content: center;
-    /* Center-align items vertically */
-    height: 100vh;
-    /* Make the container full viewport height */
+    text-align: center;
+    width: 120%;
+    padding: 20px;
+    /* Un poco de margen en celulares */
+    box-sizing: border-box;
 }
 
-#image-container {
-    /* This container will hold the images handled by script.js */
+/* ESTILO DE TARJETA */
+.card {
+    background: rgba(255, 255, 255, 0.92);
+    /* Blanco casi opaco */
+    padding: 40px;
+    border-radius: 24px;
+    /* Esquinas más redondeadas */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    /* Sombra profunda */
+    display: inline-block;
+    max-width: 95%;
+    /* Ocupa casi todo el ancho en móvil */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+/* --- CAMBIO 1: GIFS MÁS GRANDES --- */
+#image-container img {
+    /* Aumentado de 300px a 480px */
+    max-width: 520px;
+    width: 120%;
+    /* Se adapta si la pantalla es más pequeña */
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    /* Sombra para la imagen */
 }
 
 #question {
     font-family: 'Sacramento', cursive;
-    /* Apply Sacramento font to the question */
-    font-size: 52px;
-    /* Set font size for the question */
+    font-size: 55px;
+    /* Un poco más grande el título */
+    color: #d63384;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #options {
-    margin-top: 20px;
-    /* Add space above the options */
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* Espacio entre botones */
+    flex-wrap: wrap;
+    /* Para que se acomoden en celulares pequeños */
 }
 
+/* --- CAMBIO 2: NUEVO ESTILO DE BOTONES --- */
 button {
-    padding: 10px 20px;
-    /* Set padding for buttons */
-    margin: 0 10px;
-    /* Set margin around buttons */
-    font-size: 26px;
-    /* Set font size for buttons */
-    font-family: 'Sacramento', cursive;
-    /* Apply Sacramento font to the options */
-    background-color: #FB607F;
-    /* Set button background color */
+    padding: 16px 32px;
+    /* Más grandes y cómodos */
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    /* Letra más gruesa */
+
+    /* Nuevo fondo: Degradado moderno */
+    background: linear-gradient(45deg, #ff6b81, #ff4757);
     color: white;
-    /* Set text color to white */
     border: none;
-    /* Remove button border */
+
+    /* Nueva forma: Rectángulo redondeado moderno */
+    border-radius: 16px;
     cursor: pointer;
-    /* Set cursor to pointer on hover */
+
+    /* Sombra "Globo" del color del botón */
+    box-shadow: 0 10px 20px -10px rgba(255, 71, 87, 0.5);
+
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Animación muy suave */
+}
+
+/* Efecto al pasar el mouse */
+button:hover {
+    /* Degradado un poco más oscuro */
+    background: linear-gradient(45deg, #ff4757, #d63384);
+    /* El botón se "levanta" */
+    transform: translateY(-5px);
+    /* La sombra se hace más intensa */
+    box-shadow: 0 15px 25px -10px rgba(255, 71, 87, 0.7);
+}
+
+/* El botón Sí crecerá suavemente */
+#si-button {
+    transition: all 0.3s ease;
 }
